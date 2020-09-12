@@ -1,8 +1,13 @@
 package pageobjects;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SearchPageObject {
 	
@@ -18,10 +23,21 @@ public class SearchPageObject {
 
 	public void searchresult() {
 		boolean b = driver.findElement(result).isDisplayed();
-		Assert.assertEquals("HambargerMenu Tab",true, b);
+		Assert.assertEquals("Result Tab",true, b);
 	}
 	
 	public void clickonproduct() {
+		
+		
 		driver.findElement(expected_product).click();
+		
+		Set<String> handles = driver.getWindowHandles();
+		Iterator<String> It = handles.iterator();
+		String ParentWindowId = It.next();
+		String childWindowId = It.next();
+		driver.switchTo().window(childWindowId);
+		
+		
+		
 	}
 }

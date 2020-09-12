@@ -1,5 +1,8 @@
 package pageobjects;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.junit.Assert;
 
 import org.openqa.selenium.By;
@@ -37,10 +40,11 @@ public class ProductDescriptionPageObject {
 
    }
    
-   public void buynowbutton() {
-	   boolean b = driver.findElement(buynow).isDisplayed();
-	   Assert.assertEquals("Buy Now",true, b);
-   }
+	public void buynowbutton() { 
+		boolean b = driver.findElement(buynow).isDisplayed(); 
+		Assert.assertEquals("Buy Now",true,b); 
+	}
+	 
    
    public void checkingprice()  {
 	   boolean b = driver.findElement(price).isDisplayed();
@@ -49,8 +53,10 @@ public class ProductDescriptionPageObject {
    
    public void checkingcartbutton()  {
 	   
-		driver.findElement(cartbutton).click();
-	   
+	   driver.findElement(cartbutton).click();
+		
+
+		
    }
 }
 

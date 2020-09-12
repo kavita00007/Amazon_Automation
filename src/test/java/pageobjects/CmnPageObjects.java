@@ -3,6 +3,8 @@ package pageobjects;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CmnPageObjects {
 	
@@ -56,8 +58,10 @@ private WebDriver driver;
 	}
 	
 	public void validatePageTitle(String expected) {
-        String actual =driver.getTitle();
-        Assert.assertEquals("Page Title validation",expected,actual);
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.titleContains(expected));
+		String search = driver.getTitle();
+		Assert.assertEquals("Match Search Title", expected, search);
 	}
 	
 	
